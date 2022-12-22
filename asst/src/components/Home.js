@@ -15,18 +15,23 @@ class Home extends Component {
 
                 <Container className="text-center">
                 <Row>
-                    
-                <br />
-                <h1>The worlds most advanced A.I Asst.</h1>
-                <p>AI assistant, or Asst for short, will transform your productivity</p>
-                <Button href="/xmas-card-writer" variant="success" size="lg">NEW Christmas Card Writer</Button>
-                <br />
-                
-                
-                <img src={homepage} className="fluid" />
+                <Col lg={{ span: 6, offset: 3 }}>
+                    <br />
+                    <h1>The worlds most advanced A.I Asst.</h1>
+                    <p>AI assistant, or Asst for short, will transform your productivity</p>
+                    <Button href="/xmas-card-writer" variant="success" size="lg">NEW Christmas Card Writer</Button>
+                    <br />
+                    </Col>
+                     </Row>
+
+                    <Row>
+
+                  
+
+                    <img src={homepage} className="fluid" />
 
 
-
+                   
                 </Row>
             </Container>
             </div>
