@@ -4,7 +4,6 @@ import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import { Nav, Navbar, Container } from 'react-bootstrap'
 
-
 class Navigation extends Component {
     render() {
         return (
@@ -20,12 +19,11 @@ class Navigation extends Component {
                         />
                     </Navbar.Brand>
                   
-
                     <Navbar.Toggle />
 
-                    <Navbar.Collapse className="justify-content-end">
+                    <Navbar.Collapse >
                         
-                    <Nav >
+                    <Nav className="me-auto">
                         
                         <Nav.Link href="xmas-card-writer" className="mx-2" active={window.location.pathname === '/xmas-card-writer'}>Christmas Card Writer</Nav.Link>
                         <Nav.Link href="article-writer" className="mx-2" active={window.location.pathname === '/article-writer'}>Article Writer</Nav.Link>
@@ -34,6 +32,11 @@ class Navigation extends Component {
                         <Nav.Link href="tweet-writer" className="mx-2" active={window.location.pathname === '/tweet-writer'}>Tweet Writer</Nav.Link>
                     </Nav>
 
+                    <Nav>
+                        <Nav.Link href="/login" className="mx-3">Login</Nav.Link>
+                        <Nav.Link href="/signup" className="mx-3">Sign Up</Nav.Link>
+                        </Nav>
+
                     </Navbar.Collapse>
                     </Container>
                 </Navbar>
@@ -41,5 +44,4 @@ class Navigation extends Component {
         )
     }
 }
-
 export default Navigation;

@@ -14,7 +14,7 @@ function App() {
   
   return (
     <Router>
-      <div className="App">
+      <main className="App">
     
         <Navigation/>
 
@@ -33,7 +33,7 @@ function App() {
 
         <Footer />
 
-      </div>
+      </main>
 
     </Router>
   );
