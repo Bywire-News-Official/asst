@@ -1,9 +1,9 @@
 import React from "react";
 import { Component } from "react";
-import Display from "./Display"; 
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Row, Col } from "react-bootstrap";
 import cimage1 from '../cimage1.png'
 import homepage from '../homepage.gif'
+import Image from 'react-bootstrap/Image'
 
 class Home extends Component {
     render() {
@@ -14,6 +14,8 @@ class Home extends Component {
       
 
                 <Container className="text-center">
+                <Row>
+                    
                 <br />
                 <h1>The worlds most advanced A.I Asst.</h1>
                 <p>AI assistant, or Asst for short, will transform your productivity</p>
@@ -21,11 +23,11 @@ class Home extends Component {
                 <br />
                 
                 
-                <img src={homepage} />
+                <img src={homepage} className="fluid" />
 
 
 
-
+                </Row>
             </Container>
             </div>
         )
