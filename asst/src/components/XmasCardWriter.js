@@ -86,7 +86,7 @@ return (
 
             <Form onSubmit={onFormSubmit}>
 
-                <p>Ready to make your holiday season extra special? Let Asst. AI take care of all your Christmas card writing needs. Our advanced AI Assistant can help you craft meaningful and thoughtful messages tailored to each of your recipients. </p>
+                <p>Ready to make your holiday season extra special? </p><p>Let Asst. AI take care of all your Christmas card writing needs. Our advanced AI Asst. can help you craft meaningful and thoughtful messages tailored to each of your recipients. Just enter their name, relationship to you, and any informaiton you want included in the message. </p>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                    
