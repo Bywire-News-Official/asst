@@ -7,12 +7,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
 
 body {
-  font-family: 'Belleza', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
 }
 
 h1, h2, h3, h4, h5, h6, nav {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Belleza', sans-serif;
 }
 
 p {
@@ -20,7 +20,7 @@ p {
 }
 
 .App {
-  font-family: 'Belleza', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
 }
 

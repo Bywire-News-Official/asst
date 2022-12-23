@@ -15,7 +15,7 @@ class Navigation extends Component {
                         src={logo}
                         className="d-inline-block align-top"
                         alt="React Bootstrap logo"
-                        width={'125px'}
+                        width={'90px'}
                         />
                     </Navbar.Brand>
                   
