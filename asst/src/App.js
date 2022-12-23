@@ -7,6 +7,7 @@ import Xmas from './components/XmasCardWriter';
 import Tweet from './components/TweetWriter';
 import ArticleReWriter from './components/ReWriter';
 import Footer from './components/Footer';
+import AboutUs from './components/About';
 
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -27,6 +28,7 @@ function App() {
           <Route path='/article-news-writer' exact element={<ArticleReWriter/>} />
           <Route path='/article-proofer' exact element={<ArticleProofer/>} />
           <Route path='/tweet-writer' exact element={<Tweet/>} />
+          <Route path='/about-asst' exact element={<AboutUs/>} />
       
 
         </Routes>

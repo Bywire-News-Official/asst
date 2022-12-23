@@ -2,7 +2,6 @@ import React from "react";
 import { Component } from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import homepage from '../homepage.gif';
-import Image from 'react-bootstrap/Image';
 import twitter from '../twitter.gif';
 
 class Home extends Component {
@@ -29,7 +28,7 @@ class Home extends Component {
 
                   
 
-                    <img src={homepage} className="fluid" />
+                    <img src={homepage} className="fluid" alt="Christmas Card Writer Video" />
 
 
                    
@@ -42,7 +41,7 @@ class Home extends Component {
 <p>In addition to our AI writing capabilities, Asst.ai also offers top-notch list assistance services. Our AI algorithms can quickly and accurately organize and manage your to-do lists, shopping lists, and any other lists you need to keep track of. This can help you stay on top of your tasks and make the most of your time.</p>
 
 </Col>
-<Col xs={12} md={6}>  <img width={"100%"} src={twitter} className="fluid" /></Col>
+<Col xs={12} md={6}>  <img width={"100%"} src={twitter} className="fluid" alt="Twitter  Writer Video"/></Col>
 
                 </Row>
             </Container>
