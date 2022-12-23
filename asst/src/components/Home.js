@@ -12,20 +12,25 @@ class Home extends Component {
 
                 <Container >
                 <Row className="text-center">
-                <Col className="p-3" lg={{ span: 6, offset: 3 }}>
+                <Col className="p-3" lg={{ span: 8, offset: 2 }}>
                     <br />
+                    
+                    <h1 className="mb-5 text-center display-4">"The greatest force in the universe is the power of human and artificial intelligence working in harmony"</h1>
                     <h1 className="mb-3 text-center">Asst.ai - Advanced AI Assistant</h1>
-                    <h2 className="mb-3 text-center">"I literally can't live without Asst AI now!"</h2>
-                    <p className="my-5 text-center">Let the worlds most advanced AI assitant, or asst. for short, help make your life better. Try our AI Christmas Card Writer <strong>FREE</strong>.</p>
-                    
                   
-                    
-                    <Button href="/xmas-card-writer" variant="success" size="lg">🎄 Try Christmas Card Writer 🎄</Button>
-                    <br />
                
                     </Col>
                      </Row>
-
+                     <Row className="text-center ">
+                     <Col className="p-3" lg={{ span: 6, offset: 3 }}>
+                     <p className="mb-3 text-center">Let the worlds most advanced AI assitant, or asst. for short, help make your life easier. Try our AI Christmas Card Writer <strong>FREE</strong>.</p>
+                     <br />
+                  
+                    
+                    <Button href="/xmas-card-writer" variant="success" size="lg">🎄 Try Christmas Card Writer 🎄</Button>
+                    
+                     </Col>
+                     </Row>
                 
                 <Row className="text-left ">
                     <Col xs={12} md={6}>     
