@@ -103,8 +103,8 @@ function AboutUs() {
                      <Col md={3} className="my-2">
                          <Card>
                              <Card.Img variant="top" src={image} onClick={() => handleShow(image)}/>
-                             <Button onClick={() => handleSaveImage(image)} variant="dark gradient" size="sm" type="submit">
-                                Save Image
+                             <Button onClick={() => handleSaveImage(image)} variant="light gradient" size="sm" type="submit">
+                                Save
                              </Button>
                          </Card>
                      </Col>
