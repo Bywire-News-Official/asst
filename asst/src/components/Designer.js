@@ -32,7 +32,8 @@ function AboutUs() {
         size: "512x512",
       });
       setLoading(false);
-      setResult(res.data.data.map(image => image.url));
+      // update the state of result to append the newly generated images
+      setResult([...result, ...res.data.data.map(image => image.url)]);
       
     };
     
@@ -92,13 +93,14 @@ function AboutUs() {
       <Button onClick={generateImage} variant="dark gradient" size="lg" type="submit">
       Generate New Images
       </Button>
+      <br />
       {loading ? <ProgressBar animated variant="info" now={100} /> : <div></div> }
       <br /><br />
   
       {result.length > 0 ? (
              <Row>
                  {result.map(image => (
-                     <Col md={3}>
+                     <Col md={3} className="my-2">
                          <Card>
                              <Card.Img variant="top" src={image} onClick={() => handleShow(image)}/>
                              <Button onClick={() => handleSaveImage(image)} variant="dark gradient" size="sm" type="submit">
@@ -107,6 +109,7 @@ function AboutUs() {
                          </Card>
                      </Col>
                  ))}
+                 <hr />
              </Row>
             ) : (
               <></>
