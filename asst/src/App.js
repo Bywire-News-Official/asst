@@ -8,6 +8,7 @@ import Tweet from './components/TweetWriter';
 import ArticleReWriter from './components/ReWriter';
 import Footer from './components/Footer';
 import AboutUs from './components/About';
+import ImageGenerator from './components/Designer';
 
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ function App() {
           
           <Route path='/' exact element={<Home/>} />
           <Route path='/xmas-card-writer' exact element={<Xmas/>} />
+          <Route path='/ai-designer' exact element={<ImageGenerator/>} />
           <Route path='/article-writer' exact element={<ArticleWriter/>} />
           <Route path='/article-news-writer' exact element={<ArticleReWriter/>} />
           <Route path='/article-proofer' exact element={<ArticleProofer/>} />
