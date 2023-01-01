@@ -41,6 +41,14 @@ function AboutUs() {
       setShow(true);
       setImageURL(imageURL);
     };
+    const handleSaveImage = (imageURL) => {
+        //TODO: Save image to local storage or database
+        const link = document.createElement('a');
+        link.download = prompt;
+        link.href = imageURL
+        link.target = "_blank"
+        link.click();
+    }
           return (
               <div>
                    <Container>
@@ -82,7 +90,7 @@ function AboutUs() {
       </Form>
               <br />
       <Button onClick={generateImage} variant="dark gradient" size="lg" type="submit">
-      Generate Images
+      Generate New Images
       </Button>
       {loading ? <ProgressBar animated variant="info" now={100} /> : <div></div> }
       <br /><br />
@@ -93,6 +101,9 @@ function AboutUs() {
                      <Col md={3}>
                          <Card>
                              <Card.Img variant="top" src={image} onClick={() => handleShow(image)}/>
+                             <Button onClick={() => handleSaveImage(image)} variant="dark gradient" size="sm" type="submit">
+                                Save Image
+                             </Button>
                          </Card>
                      </Col>
                  ))}
