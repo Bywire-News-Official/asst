@@ -11,11 +11,12 @@ import Footer from './components/Footer';
 import AboutUs from './components/About';
 import ImageGenerator from './components/Designer';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 function App() {
   
   return (
+    <HelmetProvider>
     <Router>
       <main className="App">
     
@@ -48,6 +49,7 @@ function App() {
       </main>
 
     </Router>
+    </HelmetProvider>
   );
 }
 

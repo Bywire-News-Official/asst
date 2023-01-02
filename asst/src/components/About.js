@@ -1,14 +1,14 @@
 import React from "react";
 import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 
 class AboutUs extends Component {
     render() {
         return (
             <div>
-
+<HelmetProvider>
 <Helmet>
         <title>About Asst.ai - The Advanced AI Assistant for Design and Coding</title>
         <meta name="description" 
@@ -33,7 +33,7 @@ class AboutUs extends Component {
                      </Row>
             
                      </Container>
-            
+                     </HelmetProvider>
             </div>
 
 

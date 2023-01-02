@@ -3,7 +3,6 @@ import { Component } from 'react'
 import { Container, Form, Button, Card, Row, Col, Alert, FormControl } from 'react-bootstrap';
 import axios from "axios";
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { Helmet } from 'react-helmet';
 
 const { Configuration, OpenAIApi } = require('openai');
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
@@ -73,12 +72,6 @@ const copyToClipboard = (e) => {
 
 return (
     <div>
-
-<Helmet>
-        <title>AI Assistant for Efficient Greeting Card Message Writing | Asst.ai</title>
-        <meta name="description" 
-    content="Asst.ai's advanced AI tech streamlines the greeting card message writing process. Our AI assistant helps you come up with heartfelt, personalised messages more efficiently. Try Asst.ai now and see the difference for yourself" />
-        </Helmet>
             
         <Container>
         <Row className="mt-5">
