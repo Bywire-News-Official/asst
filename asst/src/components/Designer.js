@@ -3,7 +3,6 @@ import { Container, Form, Button, Card, Row, Col, Modal } from 'react-bootstrap'
 import { Configuration, OpenAIApi } from 'openai';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
-import { Helmet } from 'react-helmet';
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
 
 
@@ -68,11 +67,7 @@ function ImageGenerator() {
           return (
               <div>
 
-<Helmet>
-        <title>AI Image Generator Designer | Asst.ai</title>
-        <meta name="description" 
-    content="Asst.ai is the most advanced AI assistant for design and coding. Our AI technology helps you create and code more efficiently, so you can focus on what matters most. Try Asst.ai today and see the difference for yourself" />
-        </Helmet>
+
 
 
                  
