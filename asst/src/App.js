@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
@@ -9,7 +10,6 @@ import ArticleReWriter from './components/ReWriter';
 import Footer from './components/Footer';
 import AboutUs from './components/About';
 import ImageGenerator from './components/Designer';
-
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -17,6 +17,8 @@ function App() {
   return (
     <Router>
       <main className="App">
+    
+        
     
         <Navigation/>
 
