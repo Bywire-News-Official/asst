@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Container, Form, Button, Card, Row, Col, Alert, FormControl } from 'react-bootstrap';
 import axios from "axios";
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const { Configuration, OpenAIApi } = require('openai');
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
@@ -72,7 +73,12 @@ const copyToClipboard = (e) => {
 
 return (
     <div>
-            
+            <HelmetProvider>
+                 <Helmet>
+      <title>AI Assistant for Efficient Proofreading | Asst.ai</title>
+      <meta name="description" 
+    content="Asst.ai's advanced AI technology makes proofreading a breeze. Our AI assistant helps you identify and correct errors in your writing with ease. Try Asst.ai now and see the difference for yourself." />
+      </Helmet> 
         <Container>
         <Row className="mt-5">
         <Col md={{ span: 8, offset: 2 }}>
@@ -131,6 +137,7 @@ return (
             </Col>
       </Row>
         </Container>
+        </HelmetProvider>
         </div>
 );
 };
