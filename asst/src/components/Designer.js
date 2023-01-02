@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Container, Form, Button, Card, Row, Col, Alert, Modal } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Container, Form, Button, Card, Row, Col, Modal } from 'react-bootstrap';
 import { Configuration, OpenAIApi } from 'openai';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios';
@@ -41,8 +41,12 @@ function ImageGenerator() {
       )
       .then(res => {
         // update the state of result to append the newly generated images
-        setResult([...result, ...res.data.data.map(image => image.url)]);
+        if (res.status === 200) {
+          setResult([...result, ...res.data.data.map(image => image.url)]);
+          setLoading(false);
+        }
       })
+      .catch(err => console.log(err))
     };
     
     const handleClose = () => setShow(false);
@@ -117,10 +121,10 @@ function ImageGenerator() {
                          </Card>
                      </Col>
                  ))}
-                 <hr />
+                
              </Row>
             ) : (
-              <></>
+              <div>No results</div>
             )}
   
       <Modal show={show} onHide={handleClose}>
