@@ -16,6 +16,7 @@ function ImageGenerator() {
     );
     const [show, setShow] = useState(false);
     const [imageURL, setImageURL] = useState('');
+    const [apiCalled, setApiCalled] = useState(false);
   
       
       const configuration = new Configuration({
@@ -44,6 +45,7 @@ function ImageGenerator() {
         if (res.status === 200) {
           setResult([...result, ...res.data.data.map(image => image.url)]);
           setLoading(false);
+          setApiCalled(true);
         }
       })
       .catch(err => console.log(err))
@@ -109,7 +111,7 @@ function ImageGenerator() {
       {loading ? <ProgressBar animated variant="info" now={100} /> : <div></div> }
       <br /><br />
   
-      {result.length > 0 ? (
+      {(result.length > 0 || apiCalled) ? (
              <Row>
                  {result.map((image, index) => (
                      <Col md={3} className="my-2" key={index}>
@@ -124,7 +126,7 @@ function ImageGenerator() {
                 
              </Row>
             ) : (
-              <div>No results</div>
+              <div style={{display: apiCalled ? 'none' : 'block' }}><p><small>No results, yet. Images will appear here.</small></p></div>
             )}
   
       <Modal show={show} onHide={handleClose}>

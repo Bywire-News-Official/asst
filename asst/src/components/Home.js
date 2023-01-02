@@ -1,47 +1,42 @@
 import React from "react";
 import { Component } from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
-import homepage from '../homepage.gif';
-import twitter from '../twitter.gif';
+import fp from '../fp-1.png';
+
 
 class Home extends Component {
     render() {
         return (
             <div>
-                
-
-                <Container >
-                <Row className="text-center">
-                <Col className="p-3" lg={{ span: 8, offset: 2 }}>
-                    <br />
-                    
-                    <h1 className="mb-5 text-center display-4">"The greatest force in the universe is the power of human and artificial intelligence working in harmony"</h1>
-                    <h1 className="mb-3 text-center">Asst.ai - Advanced AI Assistant</h1>
-                  
-               
-                    </Col>
-                     </Row>
-                     <Row className="text-center ">
-                     <Col className="p-3" lg={{ span: 6, offset: 3 }}>
-                     <p className="mb-3 text-center">Let the worlds most advanced AI assitant, or asst. for short, help make your life easier. Try our AI Christmas Card Writer <strong>FREE</strong>.</p>
-                     <br />
-                  
-                    
-                    <Button href="/xmas-card-writer" variant="success" size="lg">🎄 Try Christmas Card Writer 🎄</Button>
-                    
-                     </Col>
-                     </Row>
-                
-                <Row className="text-left ">
-                    <Col xs={12} md={6} className="p-3">
+                <Container>
+                    <Row className="text-center">
+                        <Col lg={{ span: 8, offset: 2 }} className="mt-3 p-3">
+                            <h1 className="mb-5 text-center display-5">"The greatest force in the universe is the power of human and artificial intelligence working in harmony"</h1>
+                            <h1 className="mb-3 text-center">Asst.ai - Advanced AI Assistant</h1>
+                        </Col>
+                    </Row>
+                    <Row className="text-center">
+                        <Col lg={{ span: 6, offset: 3 }}>
+                            <p className="mb-3 text-center">Let the worlds most advanced AI assitant, or asst. for short, help make your life easier. Try our AI Image Generator <strong>FREE</strong>.</p>
+                            <Button href="/ai-designer" variant="dark" size="lg">Advanced AI Image Generator </Button>
+                        </Col>
+                    </Row>
+                    <Row className="text-left mt-5">
                         
-
-
-                    </Col>
-                    <Col xs={12} md={6}>  </Col>
-
-                </Row>
-            </Container>
+                        <Col xs={12} md={6} className="p-3 small-text">
+                            <h2>What is Asst.?</h2>
+                            <p className="small-text">Asst. is a powerful artificial intelligence (AI) assistant that helps people make their lives easier. Asst. is capable of carrying out a wide range of tasks, from helping with scheduling and planning, to providing advice and assistance with problem-solving.</p>
+                            <p className="small-text">Asst. is designed to be a self-learning AI that is constantly learning and improving itself. Asst. is capable of understanding complex conversations and adapting its responses to changing situations.</p>
+                            <h2>How Does Asst. Work?</h2>
+                            <p className="small-text">Asst. uses natural language processing (NLP) technology to understand what people are saying and provide relevant information and advice. Asst. also uses machine learning (ML) algorithms to learn from its interactions with people and refine its responses. Asst. is constantly learning and adapting to provide better and more accurate results.</p>
+                            <p className="small-text">Asst. is also able to connect to other services, such as weather apps, calendar apps, and other AI assistants, to give users access to more information and features.</p>
+                        </Col>
+                        <Col xs={12} md={6} className="p-3">
+                            <img src={fp} className="img-fluid"/>
+                        </Col>
+                        
+                    </Row>
+                </Container>
             </div>
         )
     }
