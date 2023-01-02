@@ -2,7 +2,7 @@ import logo from '../favicon.png'
 import React from 'react';
 import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
-import { Nav, Navbar, Container } from 'react-bootstrap'
+import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
 
 class Navigation extends Component {
     render() {
@@ -25,12 +25,16 @@ class Navigation extends Component {
                         
                     <Nav className="me-auto">
                         
-                        <Nav.Link href="xmas-card-writer" className="mx-2" active={window.location.pathname === '/xmas-card-writer'}>Card Writer</Nav.Link>
+                        
+                        
+                        <NavDropdown title="AI Writer" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="article-writer" active={window.location.pathname === '/article-writer'}>Article Writer</NavDropdown.Item>
+                            <NavDropdown.Item href="xmas-card-writer" active={window.location.pathname === '/xmas-card-writer'}>Card Writer</NavDropdown.Item>
+                            <NavDropdown.Item href="article-news-writer" active={window.location.pathname === '/article-news-writer'}>Article Spinner</NavDropdown.Item>
+                            <NavDropdown.Item href="article-proofer" active={window.location.pathname === '/article-proofer'}>Proofer</NavDropdown.Item>
+                            <NavDropdown.Item href="tweet-writer" active={window.location.pathname === '/tweet-writer'}>Tweet Writer</NavDropdown.Item>
+                        </NavDropdown>
                         <Nav.Link href="ai-designer" className="mx-2" active={window.location.pathname === '/ai-designer'}>Image Generater</Nav.Link>
-                        <Nav.Link href="article-writer" className="mx-2" active={window.location.pathname === '/article-writer'}>Article Writer</Nav.Link>
-                        <Nav.Link href="article-news-writer" className="mx-2" active={window.location.pathname === '/article-news-writer'}>News as New</Nav.Link>
-                        <Nav.Link href="article-proofer" className="mx-2" active={window.location.pathname === '/article-proofer'}>Proofer</Nav.Link>
-                        <Nav.Link href="tweet-writer" className="mx-2" active={window.location.pathname === '/tweet-writer'}>Tweet Writer</Nav.Link>
                         <Nav.Link href="about-asst" className="mx-2" active={window.location.pathname === '/about-asst'}>About</Nav.Link>
                     </Nav>
 
