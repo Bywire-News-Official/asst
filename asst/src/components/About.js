@@ -10,15 +10,17 @@ class AboutUs extends Component {
             <div>
                  <Container >
                 <Row className="text-left">
-                <Col className="mt-5" lg={{ span: 6, offset: 3 }}>
-<p>Asst.ai is the world's most powerful AI writing and anything assistant. We are a cutting-edge company that harnesses the power of artificial intelligence to help individuals and businesses streamline their tasks and achieve their goals.</p>
+                <Col className="mt-5 p-3" lg={{ span: 6, offset: 3 }}>
+                <h1 className="mb-3">Welcome to Asst.ai</h1>
+<p>At Asst.ai, we believe in the power of AI to make your life simpler and more streamlined. We are passionate about providing innovative AI-powered solutions to make even the most mundane tasks easier.</p>
 
-<p>Our AI writing technology is able to understand and interpret your unique writing style, making it easy for you to delegate tasks and trust that the end result will meet your high standards. We can handle a wide range of projects, including business reports, emails, social media posts, and even Christmas cards.</p>
+<p>Our AI-powered solutions include a unique greeting card message writer, AI artist designer, AI news and article writer, AI proofer, and even an AI Tweet writer. With these solutions, you can easily write the perfect greeting card message in a fraction of the time, create a beautiful design or artwork, stay up-to-date with news and articles, proofread articles quickly and accurately, and craft the perfect tweet.</p>
 
-<p>In addition to our AI writing capabilities, Asst.ai also offers top-notch list assistance services. Our AI algorithms can quickly and accurately organize and manage your to-do lists, shopping lists, and any other lists you need to keep track of. This can help you stay on top of your tasks and make the most of your time.</p>
+<p>We are committed to providing the best AI-powered solutions to make your life much easier. Our solutions are designed to help you save time, money, and energy, so you can focus on the things that matter most to you.</p>
 
-<p>At Asst.ai, we are committed to providing our customers with the best possible AI writing and list assistance services. We strive to constantly innovate and improve our technology to better serve our clients. Thank you for choosing Asst.ai.</p>
-            
+<p>Asst.ai is an innovative and cutting-edge AI technology company that is changing the way people live. We are dedicated to providing the best AI-powered solutions to make your life simpler and more efficient. Our goal is to help you streamline your life, so you can focus on the things that make you happiest.</p>
+
+<p>If you’re looking for a way to make your life easier and more efficient, Asst.ai is the perfect solution. Let us help you take your life to the next level today!</p>
 </Col> 
                      </Row>
             

@@ -33,7 +33,10 @@ class Home extends Component {
                      </Row>
                 
                 <Row className="text-left ">
-                    <Col xs={12} md={6}>     
+                    <Col xs={12} md={6} className="p-3">
+                        
+
+
                     </Col>
                     <Col xs={12} md={6}>  </Col>
 

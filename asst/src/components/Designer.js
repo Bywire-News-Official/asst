@@ -5,7 +5,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
 
 
-function AboutUs() {
+function ImageGenerator() {
 
     const [prompt, setPrompt] = useState("");
     const [result, setResult] = useState([]);
@@ -99,8 +99,8 @@ function AboutUs() {
   
       {result.length > 0 ? (
              <Row>
-                 {result.map(image => (
-                     <Col md={3} className="my-2">
+                 {result.map((image, index) => (
+                     <Col md={3} className="my-2" key={index}>
                          <Card>
                              <Card.Img variant="top" src={image} onClick={() => handleShow(image)}/>
                              <Button onClick={() => handleSaveImage(image)} variant="light gradient" size="sm" type="submit">
@@ -141,4 +141,4 @@ function AboutUs() {
       }
   
   
-  export default AboutUs;
+  export default ImageGenerator;
