@@ -1,13 +1,21 @@
 import React from "react";
 import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-
+import { Helmet } from 'react-helmet';
 
 
 class AboutUs extends Component {
     render() {
         return (
             <div>
+
+<Helmet>
+        <title>About Asst.ai - The Advanced AI Assistant for Design and Coding</title>
+        <meta name="description" 
+    content="Learn more about Asst.ai, the advanced AI assistant for design and coding. Our AI technology simplifies your workflow and helps you create and code more efficiently. Discover the benefits of Asst.ai and see why it's the ultimate AI assistant for design and coding" />
+        </Helmet>
+
+
                  <Container >
                 <Row className="text-left">
                 <Col className="mt-5 p-3" lg={{ span: 6, offset: 3 }}>

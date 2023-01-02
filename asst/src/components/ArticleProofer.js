@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Container, Form, Button, Card, Row, Col, Alert, FormControl } from 'react-bootstrap';
 import axios from "axios";
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { Helmet } from 'react-helmet';
 
 const { Configuration, OpenAIApi } = require('openai');
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
@@ -72,6 +73,12 @@ const copyToClipboard = (e) => {
 
 return (
     <div>
+
+<Helmet>
+        <title>AI Assistant for Efficient Proofreading | Asst.ai</title>
+        <meta name="description" 
+    content="Asst.ai's advanced AI technology is revolutionising the way people proofread. Our AI assistant helps you identify and correct errors in your writing faster and more efficiently. Try Asst.ai now and see the difference for yourself" />
+        </Helmet>
             
         <Container>
         <Row className="mt-5">

@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import AboutUs from './components/About';
 import ImageGenerator from './components/Designer';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 function App() {
   
@@ -18,7 +19,12 @@ function App() {
     <Router>
       <main className="App">
     
-        
+        <Helmet>
+        <title>Asst.ai | Advanced AI for Design and Coding</title>
+        <meta name="description" 
+    content="Asst.ai is the most advanced AI assistant for design and coding. Our AI technology helps you create and code more efficiently, so you can focus on what matters most. Try Asst.ai today and see the difference for yourself" />
+        <script defer data-domain="asst.ai" src="https://plausible.io/js/script.js"></script>
+        </Helmet>
     
         <Navigation/>
 
