@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Form, Button, Card, Row, Col, Alert, Modal } from 'react-bootstrap';
 import { Configuration, OpenAIApi } from 'openai';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import axios from 'axios';
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
 
 
@@ -26,15 +27,22 @@ function ImageGenerator() {
     const generateImage = async () => {
       setPlaceholder(`Search ${prompt}..`);
       setLoading(true);
-      const res = await openai.createImage({
+      // Use axios to send request
+      axios.post('https://api.openai.com/v1/images/generations', {
         prompt: prompt,
         n: 4,
-        size: "512x512",
-      });
-      setLoading(false);
-      // update the state of result to append the newly generated images
-      setResult([...result, ...res.data.data.map(image => image.url)]);
-      
+        size: "512x512"
+      },
+        {
+          headers: {
+            Authorization: `Bearer ${API_KEY}`
+          }
+        }
+      )
+      .then(res => {
+        // update the state of result to append the newly generated images
+        setResult([...result, ...res.data.data.map(image => image.url)]);
+      })
     };
     
     const handleClose = () => setShow(false);
