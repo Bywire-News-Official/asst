@@ -13,6 +13,7 @@ import CopyWriter from './components/Copywriter';
 import ImageGenerator from './components/Designer';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import Summary from './components/Summary';
 
 function App() {
   
@@ -34,6 +35,7 @@ function App() {
           <Route path='/' exact element={<Home/>} />
           <Route path='/xmas-card-writer' exact element={<Xmas/>} />
           <Route path='/copywriter' exact element={<CopyWriter/>} />
+          <Route path='/summary' exact element={<Summary/>} />
           <Route path='/ai-designer' exact element={<ImageGenerator/>} />
           <Route path='/article-writer' exact element={<ArticleWriter/>} />
           <Route path='/article-news-writer' exact element={<ArticleReWriter/>} />

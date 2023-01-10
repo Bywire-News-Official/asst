@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Container, Form, Button, Card, Row, Col, Alert, FormControl } from 'react-bootstrap';
 import axios from "axios";
@@ -6,17 +7,19 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 const { Configuration, OpenAIApi } = require('openai');
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
 
-const CopyWriter = () => {
+const Summary = () => {
     const [heading, setHeading] = useState("The response from the AI will be shown here...");
     const [response, setResponse] = useState(".......... the AI is pondering world domination");
+    const [responses, setResponses] = useState([]);
     const [copySuccess, setCopySuccess] = useState("");
+    const [error, setError] = useState("");
     const [temperature, setTemperature] = useState(0.73);
     const [maxTokens, setMaxTokens] = useState(4000);
 
     const [progress, setProgress] = useState(0);
     const [showProgressBar, setShowProgressBar] = useState(false);
     const [showResponseCard, setShowResponseCard] = useState(false);
-    const [buttonText, setButtonText] = useState("Go");
+    const [buttonText, setButtonText] = useState("Write Summary");
 
     function onFormSubmit(e) {
         //start by preveting default page refresh
@@ -36,7 +39,7 @@ const CopyWriter = () => {
     
         const data = {
             model: 'text-davinci-003',
-            prompt: `Update this text making it more professional, thoughtful and well written: ${formDataObj.articleName}`,
+            prompt: `Create a summary from this text: ${formDataObj.articleName}`,
             temperature: parseInt(formDataObj.temperature),
             max_tokens: parseInt(formDataObj.maxTokens),
             top_p: 1,
@@ -54,14 +57,22 @@ const CopyWriter = () => {
         })
         .then(response => {
             console.log(response.data);
-            setHeading(`Copywriter`);
+            setHeading(`Content Summary`);
             setResponse(`${response.data.choices[0].text}`);
             setProgress(100);
             setShowResponseCard(true);
-            setButtonText("Write another draft");
+            setButtonText("Summarise another article");
+            // add a check here to make sure that the response is unique
+            if (!responses.includes(response.data.choices[0].text)) {
+                setResponses([response.data.choices[0].text, ...responses]);
+            }
+            else {
+                console.log('This response has already been generated!');
+            }
         })
         .catch(error => {
             console.log(error);
+            setError("There was an error summarising the article. Please try again!");
         });
         
     }
@@ -77,7 +88,7 @@ const CopyWriter = () => {
             <Container>
             <Row className="mt-5">
             <Col md={{ span: 8, offset: 2 }}>
-                <h1>Asst AI Copywriter</h1>
+                <h1>Asst AI Content Summary Generator</h1>
                 <br /><br />
                 <h2>Enter text and hit Go</h2>
     
@@ -94,7 +105,7 @@ const CopyWriter = () => {
                             style={{height: "300px"}}/>
     
                             <Form.Text className="text-muted">
-                                Enter your article to make as new
+                                Enter your article to summarise
                             </Form.Text>
                     </Form.Group>
     
@@ -110,7 +121,7 @@ const CopyWriter = () => {
                         <Form.Label>Max Tokens</Form.Label>
                         <Form.Control type="number" name="maxTokens" value={maxTokens} onChange={e => setMaxTokens(e.target.value)} min="1" max="4000" />
                         <Form.Text className="text-muted">
-                            The maximum number of tokens allowed in the response. 1,000 tokens is about 750 words
+                            The maximum number of tokens allowed in the response. 1,000 tokens is about 750 words.
                         </Form.Text>
                     </Form.Group>
     
@@ -122,7 +133,8 @@ const CopyWriter = () => {
      {progress === 100 && setTimeout(() => setShowProgressBar(false), 1000)}            
                 </Form>
                 <br /><br />
-    
+                {error && <Alert style={{marginTop: "1rem" }} variant="danger">{error}</Alert>}
+
                 {showResponseCard ? (
                 <Card>
                     <Card.Body>
@@ -148,7 +160,30 @@ const CopyWriter = () => {
                 </Col>
           </Row>
             </Container>
+            <Container>
+            <Row className="mt-5">
+            <Col md={{ span: 8, offset: 2 }}>
+            {responses.map((response, index) => (
+              <Card key={index}>
+                  <Card.Body>
+                      <Card.Title>
+                         <h3> Summary V{index+1} </h3></Card.Title>
+                 
+                         <hr />
+                         <br />
+  
+                      <Card.Text>
+                       {response} 
+                      </Card.Text>
+                      
+                  </Card.Body>    
+              </Card>
+            ))}
+            </Col>
+            </Row>
+            </Container>
             </div>
     );
     };
-    export default CopyWriter;
+    export default Summary;
+
