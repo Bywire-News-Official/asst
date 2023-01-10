@@ -29,6 +29,7 @@ class Navigation extends Component {
                         
                         <NavDropdown title="AI Writer" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="article-writer" active={window.location.pathname === '/article-writer'}>Article Writer</NavDropdown.Item>
+                            <NavDropdown.Item href="copywriter" active={window.location.pathname === '/copywriter'}>Copywriter</NavDropdown.Item>
                             <NavDropdown.Item href="xmas-card-writer" active={window.location.pathname === '/xmas-card-writer'}>Card Writer</NavDropdown.Item>
                             <NavDropdown.Item href="article-news-writer" active={window.location.pathname === '/article-news-writer'}>Article Spinner</NavDropdown.Item>
                             <NavDropdown.Item href="article-proofer" active={window.location.pathname === '/article-proofer'}>Proofer</NavDropdown.Item>
