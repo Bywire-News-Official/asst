@@ -37,6 +37,7 @@ class Navigation extends Component {
                             <NavDropdown.Item href="tweet-writer" active={window.location.pathname === '/tweet-writer'}>Tweet Writer</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="ai-designer" className="mx-2" active={window.location.pathname === '/ai-designer'}>Image Generater</Nav.Link>
+                        <Nav.Link href="ai-playground" className="mx-2" active={window.location.pathname === '/ai-playground'}>AI Playground</Nav.Link>
                         <Nav.Link href="about-asst" className="mx-2" active={window.location.pathname === '/about-asst'}>About</Nav.Link>
                     </Nav>
 
