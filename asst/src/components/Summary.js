@@ -39,7 +39,7 @@ const Summary = () => {
     
         const data = {
             model: 'text-davinci-003',
-            prompt: `Create a summary from this text: ${formDataObj.articleName}`,
+            prompt: `Write a summary and additional tl:dr from this text: ${formDataObj.articleName}`,
             temperature: parseInt(formDataObj.temperature),
             max_tokens: parseInt(formDataObj.maxTokens),
             top_p: 1,
@@ -72,7 +72,7 @@ const Summary = () => {
         })
         .catch(error => {
             console.log(error);
-            setError("There was an error summarising the article. Please try again!");
+            setError("There was an error summarising the article. Please refresh the page and try again!");
         });
         
     }
@@ -88,7 +88,7 @@ const Summary = () => {
             <Container>
             <Row className="mt-5">
             <Col md={{ span: 8, offset: 2 }}>
-                <h1>Asst AI Content Summary Generator</h1>
+                <h1>Asst AI Content Summary and TL:DR Generator</h1>
                 <br /><br />
                 <h2>Enter text and hit Go</h2>
     
