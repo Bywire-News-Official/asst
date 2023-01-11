@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Form, Button, Card, Row, Col, Alert, FormControl } from 'react-bootstrap';
+import { Container, Form, Button, Row, Col, FormControl } from 'react-bootstrap';
 import axios from "axios";
 import ProfilePicture from "../person.gif";
 import BotPicture from "../bot.gif";
@@ -11,8 +11,6 @@ const Chat = () => {
     const [heading, setHeading] = useState("The response from the AI will be shown here...");
     const [response, setResponse] = useState(".......... the AI is pondering world domination");
     const [copySuccess, setCopySuccess] = useState("");
-    const [temperature, setTemperature] = useState(0.7);
-    const [maxTokens, setMaxTokens] = useState(4000);
     const [buttonText, setButtonText] = useState("Send");
     const [userInput, setUserInput] = useState('');
     const [userMessage, setUserMessage] = useState([]);
@@ -86,22 +84,21 @@ const Chat = () => {
                 <h2>Start a conversation</h2>
 
                 {userMessage.map((message, index) => (
-                    <Row key={index} style={{ marginTop: "5rem" }}>
-                           <Col md={2}>
+                    <Row key={index} className="margin-top-desk">
+                           <Col sm={2} md={2}>
                             <img src={ProfilePicture} alt="person" />
                         </Col>
-                        <Col md={10} >
+                        <Col sm={6} md={10} >
                             <div className="user-conversation-box p-3" style={{ backgroundColor:"rgb(255 226 226)", minHeight:"100px" }}>
                                 
                                 {message}
                             </div>
                         </Col>
-                        <Col md={2} style={{ marginTop: "5rem" }}>
+                        <Col md={2} className="margin-top-desk">
                         <img src={BotPicture} alt="bot" />
                         </Col>
-                        <Col md={10} style={{ marginTop: "5rem", backgroundColor:"#f1f1f1", minHeight:"100px" }}>
-                            <div className="bot-conversation-box p-3" >
-                                
+                        <Col md={10} className="margin-top-desk">
+                            <div className="bot-conversation-box p-3" style={{ backgroundColor:"#f1f1f1", minHeight:"100px" }}>
                                 {botMessage[index]}
                             </div>
                         </Col>

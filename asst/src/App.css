@@ -56,3 +56,19 @@ p,h1,h2,h3,h4,h5,h6 {
 .text-right {
   text-align: right;
 }
+@media (min-width: 768px) {
+  .margin-top-desk {
+    margin-top: 1rem;
+  }
+  .user-conversation-box {
+    margin-bottom: 1rem;
+  }
+  .bot-conversation-box {
+    margin-bottom: 1rem;
+  } 
+  @media (max-width: 9999px) {
+    .margin-top-desk {
+      margin-top: 1rem;
+    }
+  }
+}
