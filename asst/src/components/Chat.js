@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Container, Form, Button, Row, Col, FormControl } from 'react-bootstrap';
 import axios from "axios";
@@ -113,6 +112,12 @@ const Chat = () => {
                                 {botMessage[index]}
                             </div>
                         </Col>
+                        <Col md={2} className="margin-top-desk">
+                            <Button variant="light" size="sm" type="button" onClick={copyToClipboard}>
+                                Copy
+                            </Button>
+                            {copySuccess}
+                        </Col>
                      
                     </Row>
                 ))}
@@ -162,3 +167,4 @@ const Chat = () => {
     );
     };
     export default Chat;
+    
