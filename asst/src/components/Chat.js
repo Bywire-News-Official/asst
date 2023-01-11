@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Container, Form, Button, Row, Col, FormControl } from 'react-bootstrap';
 import axios from "axios";
@@ -49,7 +50,7 @@ const Chat = () => {
             frequency_penalty: 0,
             presence_penalty: 0,
         }
-    
+        setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
         axios.post("https://api.openai.com/v1/completions", data, {
             headers: {
           'Content-Type': 'application/json',
@@ -62,9 +63,9 @@ const Chat = () => {
             setHeading(``);
             setResponse(`${response.data.choices[0].text}`);
             setButtonText("Send");
-            setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
             setBotMessage(botMessage => [...botMessage, `${response.data.choices[0].text}`]);
             setUserInput('');
+            window.scrollTo(0,document.body.scrollHeight); // set window position so that user input form is visible with 1rem additional margin
         })
         .catch(error => {
             console.log(error);
@@ -147,13 +148,9 @@ const Chat = () => {
                             </Form.Text>
                     </Form.Group>
     
-                   
-    
                     <Button variant="dark gradient" size="lg" type="submit" onClick={onFormSubmit}>
                     {buttonText}
                     </Button>
-    
-                    
                 </Form>
                 <br /><br />
     
