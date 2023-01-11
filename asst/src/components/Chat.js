@@ -86,8 +86,8 @@ const Chat = () => {
             <Row className="mt-5">
             <Col md={{ span: 8, offset: 2 }}>
                 <h1>Asst AI Chat</h1>
-                <br /><br />
-                <h2>Start a conversation</h2>
+                <br />
+                <h2 className="mb-4">Start a conversation</h2>
 
                 {userMessage.map((message, index) => (
                     <Row key={index} className="margin-top-desk">
