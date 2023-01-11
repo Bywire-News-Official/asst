@@ -101,7 +101,7 @@ const Chat = () => {
                             <img src={avatar} alt="person" />
                         </Col>
                         <Col sm={6} md={10} >
-                            <div className="user-conversation-box p-3" style={{ backgroundColor:"rgb(255 226 226)", minHeight:"100px" }}>
+                            <div className="user-conversation-box p-3" style={{ backgroundColor:"rgb(255 236 236)", minHeight:"100px" }}>
                                 
                                 {message}
                             </div>
