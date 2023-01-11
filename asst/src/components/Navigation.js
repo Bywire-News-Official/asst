@@ -26,9 +26,9 @@ class Navigation extends Component {
                     <Nav className="mx-auto">
                     <Nav.Link href="chat" className="mx-2" active={window.location.pathname === '/chat'}>Chat</Nav.Link>
                         
-                        <Nav.Link href="ai-playground" className="mx-2" active={window.location.pathname === '/ai-playground'}>AI Playground</Nav.Link>
-                        <Nav.Link href="ai-designer" className="mx-2" active={window.location.pathname === '/ai-designer'}>Image Generater</Nav.Link>
-                        <NavDropdown title="AI Writer" id="collasible-nav-dropdown">
+                        <Nav.Link href="ai-playground" className="mx-2" active={window.location.pathname === '/ai-playground'}>Playground</Nav.Link>
+                        <Nav.Link href="ai-designer" className="mx-2" active={window.location.pathname === '/ai-designer'}>Image Gen.</Nav.Link>
+                        <NavDropdown title="Writer" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="article-writer" active={window.location.pathname === '/article-writer'}>Article Writer</NavDropdown.Item>
                             <NavDropdown.Item href="copywriter" active={window.location.pathname === '/copywriter'}>Copywriter</NavDropdown.Item>
                             <NavDropdown.Item href="summary" active={window.location.pathname === '/summary'}>Summary Writer</NavDropdown.Item>
