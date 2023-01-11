@@ -33,7 +33,7 @@ a:visited {
 }
 
 a:hover {
-  text-decoration: underline;
+  color: blueviolet;
 }
 
 a:active {

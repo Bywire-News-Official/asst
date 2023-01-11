@@ -17,8 +17,8 @@ class Home extends Component {
                     </Row>
                     <Row className="text-center">
                         <Col lg={{ span: 6, offset: 3 }}>
-                            <p className="mb-3 text-center">Let the worlds most advanced AI assitant, or asst. for short, help make your life easier. Try our AI Image Generator <strong>FREE</strong>.</p>
-                            <Button href="/ai-designer" variant="dark" size="lg">Advanced AI Image Generator </Button>
+                            <p className="mb-3 text-center">Asst AI chat technology is so advanced and user-friendly that it's a must-try for anyone looking to experience the latest in AI-based conversation problem solving</p>
+                            <Button href="/chat" variant="dark" size="lg">Most Advanced AI Chat in the World </Button>
                         </Col>
                     </Row>
                     <Row className="text-left mt-5">
