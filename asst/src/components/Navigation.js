@@ -1,4 +1,4 @@
-import logo from '../favicon.png'
+import logo from '../logo.png'
 import React from 'react';
 import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'

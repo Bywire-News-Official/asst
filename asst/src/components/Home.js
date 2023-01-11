@@ -11,7 +11,7 @@ class Home extends Component {
                 <Container>
                     <Row className="text-center">
                         <Col lg={{ span: 8, offset: 2 }} className="mt-3 p-3">
-                            <h1 className="mb-5 text-center display-5">"The greatest force in the universe is the power of human and artificial intelligence working in harmony"</h1>
+                           
                             <h1 className="mb-3 text-center">Asst.ai - Advanced AI Assistant</h1>
                         </Col>
                     </Row>
