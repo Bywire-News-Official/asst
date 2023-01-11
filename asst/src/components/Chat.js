@@ -22,7 +22,7 @@ const Chat = () => {
         //start by preveting default page refresh
         e.preventDefault();
         setButtonText("Waiting for response...");
-        const formData = new FormData(e.target),
+        const formData = new FormData(e.target.form),
         formDataObj = Object.fromEntries(formData.entries())
               
         const configuration = new Configuration({
@@ -65,7 +65,7 @@ const Chat = () => {
     }
 
     const onKeyPress = e => {
-        if(e.key === 'Enter') {
+        if(e.key === 'Enter' || e.key === 'Return') {
             onFormSubmit(e);
         }
     }
