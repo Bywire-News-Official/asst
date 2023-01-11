@@ -15,6 +15,7 @@ import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Summary from './components/Summary';
 import OpenAiPlayground from './components/Playground';
+import Chat from './components/Chat';
 
 function App() {
   
@@ -36,6 +37,7 @@ function App() {
           <Route path='/' exact element={<Home/>} />
           <Route path='/xmas-card-writer' exact element={<Xmas/>} />
           <Route path='/ai-playground' exact element={<OpenAiPlayground/>} />
+          <Route path='/chat' exact element={<Chat/>} />
           <Route path='/copywriter' exact element={<CopyWriter/>} />
           <Route path='/summary' exact element={<Summary/>} />
           <Route path='/ai-designer' exact element={<ImageGenerator/>} />
