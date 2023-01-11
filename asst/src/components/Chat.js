@@ -21,6 +21,7 @@ const Chat = () => {
     const [userMessage, setUserMessage] = useState([]);
     const [botMessage, setBotMessage] = useState([]);
     const [avatar, setAvatar] = useState(ProfilePicture);
+    const [copiedMessages, setCopiedMessages] = useState([]);
 
     function onFormSubmit(e) {
         //start by preveting default page refresh
@@ -78,7 +79,8 @@ const Chat = () => {
         }
     }
     
-    const copyToClipboard = (e) => {
+    const copyToClipboard = (e, index) => {
+        setCopiedMessages(copiedMessages => [...copiedMessages, index]);
         navigator.clipboard.writeText(response);
         setCopySuccess("Copied!");
       };
@@ -95,7 +97,7 @@ const Chat = () => {
 
                 {userMessage.map((message, index) => (
                     <Row key={index} className="margin-top-desk">
-                           <Col sm={2} md={2}>
+                           <Col sm={2} md={2} className="p-2">
                             <img src={avatar} alt="person" />
                         </Col>
                         <Col sm={6} md={10} >
@@ -104,7 +106,7 @@ const Chat = () => {
                                 {message}
                             </div>
                         </Col>
-                        <Col md={2} className="margin-top-desk">
+                        <Col md={2} className="margin-top-desk p-2">
                         <img src={BotPicture} alt="bot" />
                         </Col>
                         <Col md={10} className="margin-top-desk">
@@ -113,10 +115,10 @@ const Chat = () => {
                             </div>
                         </Col>
                         <Col md={2} className="margin-top-desk">
-                            <Button variant="light" size="sm" type="button" onClick={copyToClipboard}>
+                            <Button variant="light" size="sm" type="button" onClick={(e) => copyToClipboard(e, index)}>
                                 Copy
                             </Button>
-                            {copySuccess}
+                            {copiedMessages.includes(index) ? "Copied!" : ""}
                         </Col>
                      
                     </Row>
@@ -167,4 +169,3 @@ const Chat = () => {
     );
     };
     export default Chat;
-    
