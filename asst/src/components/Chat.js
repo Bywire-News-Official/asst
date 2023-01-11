@@ -149,7 +149,7 @@ const Chat = () => {
     
                    
     
-                    <Button variant="dark gradient" size="lg" type="submit">
+                    <Button variant="dark gradient" size="lg" type="submit" onClick={onFormSubmit}>
                     {buttonText}
                     </Button>
     
