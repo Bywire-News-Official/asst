@@ -15,7 +15,7 @@ class Footer extends Component {
       <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
        
       </a>
-      <small><span class="mb-3 mb-md-0 text-muted">&copy; 2023 Asst.ai | Powered with artificial intelligence from <a href={"https://bywire.agency"} target={"_blank"} className="text-decoration-none">Bywire</a> and <a href="#" className="text-decoration-none">OpenAI</a> </span></small>
+      <small><span class="mb-3 mb-md-0 text-muted">&copy; 2023 Asst.ai | Powered with artificial intelligence from <a href={"https://bywire.agency"} target={"_blank"} className="text-decoration-none">Bywire</a> and <a href="https://openai.com/" className="text-decoration-none">OpenAI</a> </span></small>
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
