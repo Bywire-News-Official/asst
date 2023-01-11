@@ -3,9 +3,14 @@ import { Container, Form, Button, Row, Col, FormControl } from 'react-bootstrap'
 import axios from "axios";
 import ProfilePicture from "../person.gif";
 import BotPicture from "../bot.gif";
+import RobotPicture from "../robot.gif";
+import AlienPicture from "../alien.gif";
+import Robot2Picture from "../robot2.gif";
+import Robot3Picture from "../robot3.gif";
 
 const { Configuration, OpenAIApi } = require('openai');
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
+
 
 const Chat = () => {
     const [heading, setHeading] = useState("The response from the AI will be shown here...");
@@ -15,6 +20,7 @@ const Chat = () => {
     const [userInput, setUserInput] = useState('');
     const [userMessage, setUserMessage] = useState([]);
     const [botMessage, setBotMessage] = useState([]);
+    const [avatar, setAvatar] = useState(ProfilePicture);
 
     function onFormSubmit(e) {
         //start by preveting default page refresh
@@ -86,7 +92,7 @@ const Chat = () => {
                 {userMessage.map((message, index) => (
                     <Row key={index} className="margin-top-desk">
                            <Col sm={2} md={2}>
-                            <img src={ProfilePicture} alt="person" />
+                            <img src={avatar} alt="person" />
                         </Col>
                         <Col sm={6} md={10} >
                             <div className="user-conversation-box p-3" style={{ backgroundColor:"rgb(255 226 226)", minHeight:"100px" }}>
@@ -107,6 +113,18 @@ const Chat = () => {
                 ))}
     
                 <br /><br />
+
+                <Form.Group>
+                    <Form.Label>Choose your Avatar</Form.Label>
+                    <Form.Control as="select" onChange={e => setAvatar(e.target.value)} style={{width: '30%'}}>
+                        <option value={ProfilePicture}>Default</option>
+                        <option value={BotPicture}>ByBot</option>
+                        <option value={RobotPicture}>Avatar 1</option>
+                        <option value={AlienPicture}>Avatar 2</option>
+                        <option value={Robot2Picture}>Avatar 3</option>
+                        <option value={Robot3Picture}>Avatar 4</option>
+                    </Form.Control>
+                </Form.Group>
     
                 <Form onSubmit={onFormSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
