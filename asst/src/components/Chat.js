@@ -28,6 +28,10 @@ const Chat = () => {
         setButtonText("Waiting for response...");
         const formData = new FormData(e.target.form),
         formDataObj = Object.fromEntries(formData.entries())
+        let promptText = formDataObj.articleName;
+        if (promptText === '') {
+            promptText = 'Hello';
+        }
               
         const configuration = new Configuration({
             apiKey: process.env.REACT_APP_OPENAI_API_KEY,
@@ -38,7 +42,7 @@ const Chat = () => {
         const data = {
             model: 'text-davinci-003',
             //prompt: `Update this text making it more professional, thoughtful and well written: ${formDataObj.articleName}`,
-            prompt: formDataObj.articleName,
+            prompt: promptText,
             temperature: 0.7,
             max_tokens: 4000,
             top_p: 1,
