@@ -23,10 +23,11 @@ class Navigation extends Component {
 
                     <Navbar.Collapse >
                         
-                    <Nav className="me-auto">
+                    <Nav className="mx-auto">
+                    <Nav.Link href="chat" className="mx-2" active={window.location.pathname === '/chat'}>Chat</Nav.Link>
                         
-                        
-                        
+                        <Nav.Link href="ai-playground" className="mx-2" active={window.location.pathname === '/ai-playground'}>AI Playground</Nav.Link>
+                        <Nav.Link href="ai-designer" className="mx-2" active={window.location.pathname === '/ai-designer'}>Image Generater</Nav.Link>
                         <NavDropdown title="AI Writer" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="article-writer" active={window.location.pathname === '/article-writer'}>Article Writer</NavDropdown.Item>
                             <NavDropdown.Item href="copywriter" active={window.location.pathname === '/copywriter'}>Copywriter</NavDropdown.Item>
@@ -36,10 +37,8 @@ class Navigation extends Component {
                             <NavDropdown.Item href="article-proofer" active={window.location.pathname === '/article-proofer'}>Proofer</NavDropdown.Item>
                             <NavDropdown.Item href="tweet-writer" active={window.location.pathname === '/tweet-writer'}>Tweet Writer</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="ai-designer" className="mx-2" active={window.location.pathname === '/ai-designer'}>Image Generater</Nav.Link>
-                        <Nav.Link href="ai-playground" className="mx-2" active={window.location.pathname === '/ai-playground'}>AI Playground</Nav.Link>
-                        <Nav.Link href="chat" className="mx-2" active={window.location.pathname === '/chat'}>Chat</Nav.Link>
                         <Nav.Link href="about-asst" className="mx-2" active={window.location.pathname === '/about-asst'}>About</Nav.Link>
+
                     </Nav>
 
                     <Nav>
