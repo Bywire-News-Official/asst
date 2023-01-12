@@ -27,6 +27,7 @@ function App() {
       <Helmet>
       <title>Asst.ai | World's Most Powerful AI Writing and Anything Assistant</title>
       <script defer data-domain="asst.ai" src="https://plausible.io/js/script.js"></script>
+      <script src="https://api.memberstack.io/static/memberstack.js?custom" data-memberstack-id="a490ac63063299b667c4132aaed01104"> </script> 
       </Helmet>
     
         <Navigation/>
