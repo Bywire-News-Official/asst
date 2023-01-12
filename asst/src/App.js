@@ -27,7 +27,6 @@ function App() {
       <Helmet>
       <title>Asst.ai | World's Most Powerful AI Writing and Anything Assistant</title>
       <script defer data-domain="asst.ai" src="https://plausible.io/js/script.js"></script>
-      
       </Helmet>
     
         <Navigation/>
