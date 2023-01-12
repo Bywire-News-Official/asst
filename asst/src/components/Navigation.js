@@ -44,6 +44,7 @@ class Navigation extends Component {
                     <Nav>
                         <Nav.Link href="https://bywire.agency/" target={"_blank"} className="mx-3">Bywire</Nav.Link>
                         <Nav.Link href="https://bywire.news/" target={"_blank"} className="mx-3">Blog</Nav.Link>
+                        <Nav.Link href="https://asst.ai/#/ms/login" className="mx-3">Login</Nav.Link>
                         </Nav>
 
                     </Navbar.Collapse>
