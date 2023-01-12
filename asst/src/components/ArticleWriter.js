@@ -4,9 +4,13 @@ import { Container, Form, Button, Card, Row, Col, Alert } from 'react-bootstrap'
 import axios from "axios";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { MemberstackProvider } from "@memberstack/react"; 
+
 
 const { Configuration, OpenAIApi } = require('openai');
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
+
+const config = { publicKey: "pk_2e8305c0125430c13b07" }
 
 const ArticleWriter = () => {
     const [heading, setHeading] = useState("The response from the AI will be shown here...");

@@ -2,6 +2,7 @@ import React from "react";
 import { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { MemberstackProvider } from "@memberstack/react"; 
 
 
 class AboutUs extends Component {
