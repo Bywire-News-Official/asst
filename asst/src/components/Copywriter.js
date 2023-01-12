@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Form, Button, Card, Row, Col, Alert, FormControl } from 'react-bootstrap';
 import axios from "axios";
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const { Configuration, OpenAIApi } = require('openai');
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY

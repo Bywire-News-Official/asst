@@ -16,7 +16,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Summary from './components/Summary';
 import OpenAiPlayground from './components/Playground';
 import Chat from './components/Chat';
-import Members from './components/Members.';
+import Members from './components/Members';
 
 function App() {
   

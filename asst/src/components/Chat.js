@@ -7,6 +7,7 @@ import RobotPicture from "../robot.gif";
 import AlienPicture from "../alien.gif";
 import Robot2Picture from "../robot2.gif";
 import Robot3Picture from "../robot3.gif";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const { Configuration, OpenAIApi } = require('openai');
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
