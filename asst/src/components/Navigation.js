@@ -38,14 +38,12 @@ class Navigation extends Component {
                             <NavDropdown.Item href="tweet-writer" active={window.location.pathname === '/tweet-writer'}>Tweet Writer</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="about-asst" className="mx-2" active={window.location.pathname === '/about-asst'}>About</Nav.Link>
-                        
 
                     </Nav>
 
                     <Nav>
                         <Nav.Link href="https://bywire.agency/" target={"_blank"} className="mx-3">Bywire</Nav.Link>
                         <Nav.Link href="https://bywire.news/" target={"_blank"} className="mx-3">Blog</Nav.Link>
-                        <Nav.Link href="login" className="mx-2" active={window.location.pathname === '/login'}>Login</Nav.Link>
                         </Nav>
 
                     </Navbar.Collapse>
