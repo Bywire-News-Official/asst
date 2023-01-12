@@ -16,9 +16,6 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Summary from './components/Summary';
 import OpenAiPlayground from './components/Playground';
 import Chat from './components/Chat';
-import { SignInModal } from "@memberstack/react";
-
-
 
 
 function App() {
@@ -51,7 +48,7 @@ function App() {
           <Route path='/article-proofer' exact element={<ArticleProofer/>} />
           <Route path='/tweet-writer' exact element={<Tweet/>} />
           <Route path='/about-asst' exact element={<AboutUs/>} />
-          <Route path="/login" component={SignInModal} />
+          
           
 
         </Routes>
