@@ -16,6 +16,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Summary from './components/Summary';
 import OpenAiPlayground from './components/Playground';
 import Chat from './components/Chat';
+import Members from './components/Members.';
 
 function App() {
   
@@ -27,7 +28,7 @@ function App() {
       <Helmet>
       <title>Asst.ai | World's Most Powerful AI Writing and Anything Assistant</title>
       <script defer data-domain="asst.ai" src="https://plausible.io/js/script.js"></script>
-      <script src="https://api.memberstack.io/static/memberstack.js?custom" data-memberstack-id="a490ac63063299b667c4132aaed01104"> </script> 
+      
       </Helmet>
     
         <Navigation/>
@@ -47,6 +48,7 @@ function App() {
           <Route path='/article-proofer' exact element={<ArticleProofer/>} />
           <Route path='/tweet-writer' exact element={<Tweet/>} />
           <Route path='/about-asst' exact element={<AboutUs/>} />
+          <Route path='/members' exact element={<Members/>} />
       
 
         </Routes>
