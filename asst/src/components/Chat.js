@@ -23,149 +23,133 @@ const Chat = () => {
     const [avatar, setAvatar] = useState(ProfilePicture);
     const [copiedMessages, setCopiedMessages] = useState([]);
 
-    function onFormSubmit(e) {
-        //start by preveting default page refresh
+    const onFormSubmit = e => {
         e.preventDefault();
         setButtonText("Waiting for response...");
-        const formData = new FormData(e.target.form),
-        formDataObj = Object.fromEntries(formData.entries())
-        let promptText = formDataObj.articleName;
-        if (promptText === '') {
-            promptText = 'Hello';
-        }
-              
+        const formData = new FormData(e.target.form);
+        const formDataObj = Object.fromEntries(formData.entries());
+        let promptText = formDataObj.articleName || 'Hello';
         const configuration = new Configuration({
             apiKey: process.env.REACT_APP_OPENAI_API_KEY,
         });
-        
         const openai = new OpenAIApi(configuration);
-    
         const data = {
             model: 'text-davinci-003',
-            //prompt: `Update this text making it more professional, thoughtful and well written: ${formDataObj.articleName}`,
             prompt: promptText,
             temperature: 0.7,
             max_tokens: 4000,
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,
-        }
+        };
         setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
         axios.post("https://api.openai.com/v1/completions", data, {
             headers: {
           'Content-Type': 'application/json',
           Authorization: 'Bearer ' + API_KEY,
             },
-            
-        })
-        .then(response => {
-            console.log(response.data);
-            setHeading(``);
+        }).then(response => {
+            setHeading('');
             setResponse(`${response.data.choices[0].text}`);
             setButtonText("Send");
             setBotMessage(botMessage => [...botMessage, `${response.data.choices[0].text}`]);
             setUserInput('');
-            window.scrollTo(0,document.body.scrollHeight); // set window position so that user input form is visible with 1rem additional margin
-        })
-        .catch(error => {
+            window.scrollTo(0,document.body.scrollHeight);
+        }).catch(error => {
             console.log(error);
         });
-        
-    }
+    };
 
     const onKeyPress = e => {
         if(e.key === 'Enter' || e.key === 'Return') {
             onFormSubmit(e);
         }
-    }
+    };
     
     const copyToClipboard = (e, index) => {
         setCopiedMessages(copiedMessages => [...copiedMessages, index]);
         navigator.clipboard.writeText(response);
         setCopySuccess("Copied!");
-      };
-    
+    };
+
     return (
         <div>
-                
             <Container>
-            <Row className="mt-5">
-            <Col md={{ span: 8, offset: 2 }}>
-                <h1>Asst AI Chat</h1>
-                <br />
-                <h2 className="mb-4">Start a conversation</h2>
-
-                {userMessage.map((message, index) => (
-                    <Row key={index} className="margin-top-desk">
-                           <Col sm={2} md={2} className="p-2">
-                            <img src={avatar} alt="person" />
-                        </Col>
-                        <Col sm={6} md={10} >
-                            <div className="user-conversation-box p-3" style={{ backgroundColor:"rgb(255 236 236)", minHeight:"100px" }}>
-                                
-                                {message}
-                            </div>
-                        </Col>
-                        <Col md={2} className="margin-top-desk p-2">
-                        <img src={BotPicture} alt="bot" />
-                        </Col>
-                        <Col md={10} className="margin-top-desk">
-                            <div className="bot-conversation-box p-3" style={{ backgroundColor:"#f1f1f1", minHeight:"100px" }}>
-                                {botMessage[index]}
-                            </div>
-                        </Col>
-                        <Col md={2} className="margin-top-desk">
-                            <Button variant="light" size="sm" type="button" onClick={(e) => copyToClipboard(e, index)}>
-                                Copy
+                <Row className="mt-5">
+                    <Col md={{ span: 8, offset: 2 }}>
+                        <h1>Asst AI Chat</h1>
+                        <br />
+                        <h2 className="mb-4">Start a conversation</h2>
+                        {userMessage.map((message, index) => (
+                            <Row key={index} className="margin-top-desk">
+                                <Row>
+                                    <Col sm={2} md={2} className="p-2">
+                                        <img src={avatar} alt="person" />
+                                    </Col>
+                                    <Col sm={6} md={10} >
+                                        <div className="user-conversation-box p-3" style={{ backgroundColor:"rgb(255 236 236)", minHeight:"100px" }}>
+                                            {message}
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={2} className=" p-2">
+                                        <img src={BotPicture} alt="bot" />
+                                    </Col>
+                                    <Col md={10} className="">
+                                        <div className="bot-conversation-box p-3" style={{ backgroundColor:"#f1f1f1", minHeight:"100px" }}>
+                                            {botMessage[index]}
+                                            <br />
+                                        </div>
+                                    </Col>
+                                    <Row className="mb-2">
+                                        <Col md={11}></Col>
+                                        <Col md={1} className="">
+                                            <Button  variant="dark" size="sm" type="button" onClick={(e) => copyToClipboard(e, index)}>
+                                                Copy
+                                            </Button>
+                                            {copiedMessages.includes(index) ? "Copied!" : ""}
+                                        </Col>
+                                    </Row>
+                                </Row>
+                            </Row>
+                        ))}
+                        <br /><br />
+                        <Form.Group>
+                            <Form.Label>Choose your Avatar</Form.Label>
+                            <Form.Control as="select" onChange={e => setAvatar(e.target.value)} style={{width: '30%'}}>
+                                <option value={ProfilePicture}>Default</option>
+                                <option value={BotPicture}>ByBot</option>
+                                <option value={RobotPicture}>Avatar 1</option>
+                                <option value={AlienPicture}>Avatar 2</option>
+                                <option value={Robot2Picture}>Avatar 3</option>
+                                <option value={Robot3Picture}>Avatar 4</option>
+                            </Form.Control>
+                        </Form.Group>
+                        <Form onSubmit={onFormSubmit}>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <FormControl as="textarea" 
+                                    type="text"
+                                    name="articleName"
+                                    placeholder="Start a conversation, ask me anything..." 
+                                    onChange={e => setUserInput(e.target.value)}
+                                    value={userInput}
+                                    style={{height: "100px"}}
+                                    onKeyPress={onKeyPress} />
+                                <Form.Text className="text-muted">
+                                    Start a conversation
+                                </Form.Text>
+                            </Form.Group>
+                            <Button variant="dark gradient" size="lg" type="submit" onClick={onFormSubmit}>
+                                {buttonText}
                             </Button>
-                            {copiedMessages.includes(index) ? "Copied!" : ""}
-                        </Col>
-                     
-                    </Row>
-                ))}
-    
-                <br /><br />
-
-                <Form.Group>
-                    <Form.Label>Choose your Avatar</Form.Label>
-                    <Form.Control as="select" onChange={e => setAvatar(e.target.value)} style={{width: '30%'}}>
-                        <option value={ProfilePicture}>Default</option>
-                        <option value={BotPicture}>ByBot</option>
-                        <option value={RobotPicture}>Avatar 1</option>
-                        <option value={AlienPicture}>Avatar 2</option>
-                        <option value={Robot2Picture}>Avatar 3</option>
-                        <option value={Robot3Picture}>Avatar 4</option>
-                    </Form.Control>
-                </Form.Group>
-    
-                <Form onSubmit={onFormSubmit}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                       
-                        <FormControl as="textarea" 
-                            type="text"
-                            name="articleName"
-                            placeholder="Start a conversation, ask me anything..." 
-                            onChange={e => setUserInput(e.target.value)}
-                            value={userInput}
-                            style={{height: "100px"}}
-                            onKeyPress={onKeyPress} />
-    
-                            <Form.Text className="text-muted">
-                                Start a conversation
-                            </Form.Text>
-                    </Form.Group>
-    
-                    <Button variant="dark gradient" size="lg" type="submit" onClick={onFormSubmit}>
-                    {buttonText}
-                    </Button>
-                </Form>
-                <br /><br />
-    
-                
-                </Col>
-          </Row>
+                        </Form>
+                        <br /><br />
+                    </Col>
+                </Row>
             </Container>
-            </div>
+        </div>
     );
-    };
-    export default Chat;
+};
+
+export default Chat;
