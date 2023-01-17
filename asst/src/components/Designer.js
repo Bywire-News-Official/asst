@@ -74,13 +74,20 @@ function ImageGenerator() {
     setShow(true);
     setImageURL(imageURL);
   };
-  const handleSaveImage = (imageURL) => {
+ const handleSaveImage = (imageURL) => {
     // TODO: Save image to local storage or database
     const link = document.createElement('a');
     link.download = prompt;
     link.href = imageURL;
     link.target = '_blank';
     link.click();
+
+    // HTML5 Local Storage
+    localStorage.setItem("image", imageURL);
+  };
+  const handleClearImages = () => {
+    setResult([]);
+    localStorage.clear();
   };
 
   const handleUserInput = (input) => {
@@ -157,6 +164,19 @@ function ImageGenerator() {
               >
                 Generate New Images
               </Button>
+              {result.length > 0 ? (
+                <Button
+                  onClick={handleClearImages}
+                  variant="dark gradient"
+                  size="lg"
+                  type="submit"
+                  className="ml-3"
+                >
+                  Clear Images
+                </Button>
+              ) : (
+                <div></div>
+              )}
               <br />
               {loading ? (
                 <ProgressBar animated variant="info" now={100} />
