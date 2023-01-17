@@ -163,7 +163,7 @@ function ImageGenerator() {
                 type="submit"
               >
                 Generate New Images
-              </Button>
+              </Button> 
               {result.length > 0 ? (
                 <Button
                   onClick={handleClearImages}
