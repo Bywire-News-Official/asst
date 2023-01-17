@@ -24,7 +24,6 @@ const userInputs = [
 function ImageGenerator() {
   const [prompt, setPrompt] = useState('');
   const [result, setResult] = useState([]);
-  const [variations, setVariations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [placeholder, setPlaceholder] = useState(
     'Describe the type of image you would like to create in as much detail as possible'
