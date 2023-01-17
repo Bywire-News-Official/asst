@@ -16,6 +16,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Summary from './components/Summary';
 import OpenAiPlayground from './components/Playground';
 import Chat from './components/Chat';
+import Ukfactcheck from './components/Ukfactcheck';
 
 function App() {
   
@@ -37,6 +38,7 @@ function App() {
           <Route path='/' exact element={<Home/>} />
           <Route path='/xmas-card-writer' exact element={<Xmas/>} />
           <Route path='/ai-playground' exact element={<OpenAiPlayground/>} />
+          <Route path='/uk-fact-check' exact element={<Ukfactcheck/>} />
           <Route path='/chat' exact element={<Chat/>} />
           <Route path='/copywriter' exact element={<CopyWriter/>} />
           <Route path='/summary' exact element={<Summary/>} />

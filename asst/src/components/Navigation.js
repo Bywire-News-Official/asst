@@ -36,6 +36,7 @@ class Navigation extends Component {
                             <NavDropdown.Item href="article-news-writer" active={window.location.pathname === '/article-news-writer'}>Article Spinner</NavDropdown.Item>
                             <NavDropdown.Item href="article-proofer" active={window.location.pathname === '/article-proofer'}>Proofer</NavDropdown.Item>
                             <NavDropdown.Item href="tweet-writer" active={window.location.pathname === '/tweet-writer'}>Tweet Writer</NavDropdown.Item>
+                            <NavDropdown.Item href="uk-fact-check" active={window.location.pathname === '/uk-fact-check'}>UK Fact Check</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link href="about-asst" className="mx-2" active={window.location.pathname === '/about-asst'}>About</Nav.Link>
 
@@ -44,9 +45,7 @@ class Navigation extends Component {
                     <Nav>
                         <Nav.Link href="https://bywire.agency/" target={"_blank"} className="mx-3">Bywire</Nav.Link>
                         <Nav.Link href="https://bywire.news/" target={"_blank"} className="mx-3">Blog</Nav.Link>
-                        <Nav.Link href="https://asst.ai/#/ms/login" className="mx-3">Login</Nav.Link>
-                        <Nav.Link href="https://asst.ai/#/ms/logout" className="mx-3">Logout</Nav.Link>
-                        <Nav.Link href="https://asst.ai/#/ms/signup/63bf5dbab060b50004bda638" className="mx-3">Signup</Nav.Link>
+                        
                         </Nav>
 
                     </Navbar.Collapse>
