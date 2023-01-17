@@ -20,7 +20,6 @@ const userInputs = [
     "Shagy from Scooby-doo in an Cyberpunk look, but confused, and somewhat used, holding a copy of a book called private eye"
 ]
 
-
 function ImageGenerator() {
   const [prompt, setPrompt] = useState('');
   const [result, setResult] = useState([]);
@@ -68,11 +67,41 @@ function ImageGenerator() {
       .catch((err) => console.log(err));
   };
 
+  const generateVariations = async (imageURL) => {
+    // Use axios to send request
+    axios
+      .post(
+        'https://api.openai.com/v1/images/variations',
+        {
+          prompt: `${prompt}`,
+          n: 4,
+          size: '512x512',
+          image_url: `${imageURL}`,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${API_KEY}`,
+          },
+        }
+      )
+      .then((res) => {
+        // update the state of result to append the newly generated images
+        if (res.status === 200 && prompt !== '') {
+          // Added condition
+          console.log('Sent prompt to OpenAI: ', prompt);
+          setVariations([...variations, ...res.data.data.map((image) => image.url)]);
+          setLoading(false);
+          setApiCalled(true);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   const handleClose = () => setShow(false);
   const handleShow = (imageURL) => {
     setShow(true);
     setImageURL(imageURL);
+    generateVariations(imageURL);
   };
   const handleSaveImage = (imageURL) => {
     // TODO: Save image to local storage or database
@@ -86,6 +115,13 @@ function ImageGenerator() {
   const handleUserInput = (input) => {
     setPrompt(input);
     if (prompt !== '') {
+      generateImage();
+    }
+  };
+
+  const handleReload = () => {
+    if (prompt === '') {
+      setPrompt(userInputs[0]);
       generateImage();
     }
   };
@@ -124,7 +160,14 @@ function ImageGenerator() {
                   </Col>
                 ))}
                 <Col md={3} className="my-2">
-                  
+                  <Button
+                    variant="secondary gradient"
+                    size="sm"
+                    type="submit"
+                    onClick={handleReload}
+                  >
+                    Reload
+                  </Button>
                 </Col>
               </Row>
             </Col>
@@ -186,7 +229,25 @@ function ImageGenerator() {
                       </Card>
                     </Col>
                   ))}
-                  
+                  {variations.map((image, index) => (
+                    <Col md={3} className="my-2" key={index}>
+                      <Card>
+                        <Card.Img
+                          variant="top"
+                          src={image}
+                          onClick={() => handleShow(image)}
+                        />
+                        <Button
+                          onClick={() => handleSaveImage(image)}
+                          variant="light gradient"
+                          size="sm"
+                          type="submit"
+                        >
+                          Save
+                        </Button>
+                      </Card>
+                    </Col>
+                  ))}
                 </Row>
               ) : (
                 <div style={{ display: apiCalled ? 'none' : 'block' }}>
