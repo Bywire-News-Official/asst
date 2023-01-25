@@ -63,9 +63,16 @@ const Chat = () => {
                 },
             });
             setHeading('');
-            setResponse(`${response.data.choices[0].text}`);
+			let responseText;
+			 // Check if the input is code
+        if (isCode(promptText)) {
+            responseText = `<pre><code>${response.data.choices[0].text}</code></pre>`;
+        } else {
+            responseText = response.data.choices[0].text;
+        }
+            setResponse(responseText);
             setButtonText("Send");
-            setBotMessage(botMessage => [...botMessage, `${response.data.choices[0].text}`]);
+            setBotMessage(botMessage => [...botMessage, responseText]);
             setUserInput('');
             window.scrollTo(0, document.body.scrollHeight);
         } catch (error) {
@@ -119,7 +126,7 @@ const Chat = () => {
                                     </Col>
                                     <Col md={10} className="">
                                         <div className="bot-conversation-box p-3" style={{ backgroundColor:"#f1f1f1", minHeight:"100px" }}>
-                                            {botMessage[index]}
+										{isCode(response) ? <pre><code>{botMessage[index]}</code></pre> : botMessage[index]}
                                             <br />
                                         </div>
                                     </Col>
