@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Container, Form, Button, Row, Col, FormControl } from 'react-bootstrap';
 import axios from "axios";
 import ProfilePicture from "../person.gif";
@@ -23,14 +23,12 @@ const Chat = () => {
     const [avatar, setAvatar] = useState(ProfilePicture);
     const [copiedMessages, setCopiedMessages] = useState([]);
 
-    
-
-    const onFormSubmit = async e => {
+    const onFormSubmit = useCallback(async e => {
         e.preventDefault();
         setButtonText("Waiting for response...");
         const formData = new FormData(e.target.form);
         const formDataObj = Object.fromEntries(formData.entries());
-        let promptText = formDataObj.articleName || 'Hello';
+        let promptText = formDataObj.articleName || '';
         const isCodeInput = isCode(promptText);
         const configuration = new Configuration({
             apiKey: process.env.REACT_APP_OPENAI_API_KEY,
@@ -78,7 +76,7 @@ const Chat = () => {
         } catch (error) {
             console.log(error);
         }
-    };
+    }, [API_KEY]);
     
     // Function to check if the input is code
     const isCode = (input) => {
@@ -92,12 +90,21 @@ const Chat = () => {
         if(e.key === 'Enter' || e.key === 'Return') {
             onFormSubmit(e);
         }
+
+        if(e.key === 'Control' && e.key === 'Enter') {
+            addNewLine();
+        }
     };
     
     const copyToClipboard = (e, index) => {
         setCopiedMessages(copiedMessages => [...copiedMessages, index]);
         navigator.clipboard.writeText(response);
         setCopySuccess("Copied!");
+    };
+    
+    const addNewLine = () => {
+        let textarea = document.querySelector('textarea');
+        textarea.value += '\n';
     };
 
     return (
