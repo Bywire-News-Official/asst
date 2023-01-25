@@ -35,7 +35,7 @@ function onFormSubmit(e) {
 
     const data = {
         model: 'text-davinci-003',
-        prompt: `Write a professional news story from the following information ${formDataObj.articleName}`,
+        prompt: `I need a new, unique and compelling news article from this information, in the style of a new york times, who writes in british english, is a 2x pulitzer prize winner journalist, who has more than 20 years experience in journalism and writing, and has a phd in english ${formDataObj.articleName}`,
         temperature: 0.73,
         max_tokens: 4000,
         top_p: 1,
