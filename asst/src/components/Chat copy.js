@@ -7,6 +7,7 @@ import RobotPicture from "../robot.gif";
 import AlienPicture from "../alien.gif";
 import Robot2Picture from "../robot2.gif";
 import Robot3Picture from "../robot3.gif";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const { Configuration, OpenAIApi } = require('openai');
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
@@ -23,63 +24,42 @@ const Chat = () => {
     const [avatar, setAvatar] = useState(ProfilePicture);
     const [copiedMessages, setCopiedMessages] = useState([]);
 
-    
-
-    const onFormSubmit = async e => {
+    const onFormSubmit = e => {
         e.preventDefault();
         setButtonText("Waiting for response...");
         const formData = new FormData(e.target.form);
         const formDataObj = Object.fromEntries(formData.entries());
         let promptText = formDataObj.articleName || 'Hello';
-        const isCodeInput = isCode(promptText);
         const configuration = new Configuration({
             apiKey: process.env.REACT_APP_OPENAI_API_KEY,
         });
         const openai = new OpenAIApi(configuration);
-        let data = {};
-        // Check if the input is code
-        if (isCode(promptText)) {
-            data = {
-                model: 'code-davinci-002',
-                prompt: promptText,
-            }
-        } else {
-            data = {
-                model: 'text-davinci-003',
-                prompt: promptText,
-                temperature: 0.7,
-                max_tokens: 4000,
-                top_p: 1,
-                frequency_penalty: 0,
-                presence_penalty: 0,
-            };
-        }
+        const data = {
+            model: 'text-davinci-003',
+            prompt: promptText,
+            temperature: 0.7,
+            max_tokens: 4000,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+        };
         setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
-        try {
-            const response = await axios.post("https://api.openai.com/v1/completions", data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + API_KEY,
-                },
-            });
+        axios.post("https://api.openai.com/v1/completions", data, {
+            headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + API_KEY,
+            },
+        }).then(response => {
             setHeading('');
             setResponse(`${response.data.choices[0].text}`);
             setButtonText("Send");
             setBotMessage(botMessage => [...botMessage, `${response.data.choices[0].text}`]);
             setUserInput('');
-            window.scrollTo(0, document.body.scrollHeight);
-        } catch (error) {
+            window.scrollTo(0,document.body.scrollHeight);
+        }).catch(error => {
             console.log(error);
-        }
+        });
     };
-    
-    // Function to check if the input is code
-    const isCode = (input) => {
-        const codeRegex = /(function|var|let|const|{|})/g;
-        return codeRegex.test(input);
-
-    }
-    
 
     const onKeyPress = e => {
         if(e.key === 'Enter' || e.key === 'Return') {
