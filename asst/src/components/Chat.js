@@ -169,7 +169,8 @@ const Chat = () => {
                                     placeholder="Start a conversation, ask me anything..." 
                                     onChange={e => setUserInput(e.target.value)}
                                     value={userInput}
-                                    style={{height: "100px"}}
+                                    rows="4"
+                                    cols="50"
                                     onKeyPress={onKeyPress} />
                                 <Form.Text className="text-muted">
                                     Start a conversation
