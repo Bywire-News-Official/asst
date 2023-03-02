@@ -45,11 +45,6 @@ const Chat = () => {
             data = {
                 model: 'gpt-3.5-turbo',
                 prompt: promptText,
-                temperature: 0.7,
-                max_tokens: 4096,
-                top_p: 1,
-                frequency_penalty: 0,
-                presence_penalty: 0,
             };
         }
         setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
