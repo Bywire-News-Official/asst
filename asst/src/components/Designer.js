@@ -45,8 +45,8 @@ function ImageGenerator() {
         'https://api.openai.com/v1/images/generations',
         {
           prompt: `${prompt}`,
-          n: 1,
-          size: '512x512',
+          n: 2,
+          size: '1024x1024',
         },
         {
           headers: {
