@@ -43,7 +43,7 @@ const Chat = () => {
             }
         } else {
             data = {
-            model: 'gpt-4',
+            model: 'gpt-3.5-turbo',
             prompt: promptText,
             temperature: 0.7,
             max_tokens: 2048,
@@ -54,7 +54,7 @@ const Chat = () => {
         }
         setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
         try {
-            const response = await axios.post("https://api.openai.com/v1/completions", data, {
+            const response = await axios.post("https://api.openai.com/v1/chat/completions", data, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: 'Bearer ' + API_KEY,
