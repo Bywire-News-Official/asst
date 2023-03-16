@@ -26,7 +26,8 @@ const Chat = () => {
     e.preventDefault();
     setButtonText("Waiting for response...");
 
-    let promptText = userInput || '';
+    let promptText = userInput.trim() || '';
+    console.log("User input:", promptText); // Log the user input to the console
     const isCodeInput = isCode(promptText);
 
     const configuration = new Configuration({
