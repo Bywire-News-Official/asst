@@ -22,7 +22,7 @@ const Chat = () => {
     const [avatar, setAvatar] = useState(ProfilePicture);
     const [copiedMessages, setCopiedMessages] = useState([]);
 
-    const onFormSubmit = useCallback(async e => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Waiting for response...");
 
@@ -74,16 +74,17 @@ const Chat = () => {
         return codeRegex.test(input);
     };
 
-    const onKeyDown = e => {
+    const onKeyDown = (e) => {
     if (e.key === 'Enter' && !e.ctrlKey) {
         e.preventDefault();
-        onFormSubmit(e);
+        handleSubmit(e);
     }
 
     if (e.key === 'Enter' && e.ctrlKey) {
         addNewLine();
     }
 };
+
 
 
     const copyToClipboard = (e, index) => {
@@ -101,7 +102,7 @@ const Chat = () => {
         <Container>
             <Row>
                 <Col>
-                    <Form onSubmit={onFormSubmit}>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Ask the AI</Form.Label>
                             <FormControl
@@ -111,6 +112,7 @@ const Chat = () => {
     onChange={e => setUserInput(e.target.value)}
     onKeyDown={onKeyDown}
 />
+
 
                         </Form.Group>
                         <Button variant="primary" type="submit">
