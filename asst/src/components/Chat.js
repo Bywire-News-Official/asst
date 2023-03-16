@@ -68,6 +68,7 @@ const Chat = () => {
             console.log(error);
         }
     }, [API_KEY]);
+}
 
     const isCode = (input) => {
         const codeRegex = /(function|var|let|const|{|})/g;
