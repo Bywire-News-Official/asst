@@ -27,37 +27,37 @@ const Chat = () => {
     config: new Configuration(),
     });
 
-    const sendMessage = useCallback(async () => {
-    if (!userInput.trim()) return;
+    const sendMessage = useCallback(async function() {
+  if (!userInput.trim()) return;
 
-    setUserMessage([...userMessage, { text: userInput, image: avatar }]);
-    setButtonText("Sending...");
+  setUserMessage([...userMessage, { text: userInput, image: avatar }]);
+  setButtonText("Sending...");
 
-    try {
+  try {
     const result = await openai.createCompletion({
-    engine: "text-davinci-002",
-    prompt: User: ${userInput}\nAI:,
-    maxTokens: 150,
-    n: 1,
-    stop: null,
-    temperature: 0.7,
-    topP: 1,
+      engine: "text-davinci-002",
+      prompt: `User: ${userInput}\nAI:`,
+      maxTokens: 150,
+      n: 1,
+      stop: null,
+      temperature: 0.7,
+      topP: 1,
     });
-        
+
     const aiResponse = result.choices[0].text.trim();
     setBotMessage([...botMessage, { text: aiResponse, image: BotPicture }]);
     setResponse(aiResponse);
     setHeading("The AI has responded:");
-        
-    } catch (error) {
-setBotMessage([...botMessage, { text: "Error occurred. Please try again.", image: BotPicture }]);
-setResponse("Error occurred. Please try again.");
-setHeading("Error:");
-} finally {
-setButtonText("Send");
-setUserInput('');
-}
-}, [userInput, userMessage, botMessage, avatar]);
+  } catch (error) {
+    setBotMessage([...botMessage, { text: "Error occurred. Please try again.", image: BotPicture }]);
+    setResponse("Error occurred. Please try again.");
+    setHeading("Error:");
+  } finally {
+    setButtonText("Send");
+    setUserInput('');
+  }
+}.bind(this), [userInput, userMessage, botMessage, avatar]);
+
 
 const handleKeyPress = (event) => {
 if (event.key === "Enter") {
