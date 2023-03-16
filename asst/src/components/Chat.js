@@ -90,19 +90,20 @@ onKeyPress={handleKeyPress}
 </Col>
 </Row>
 <Row>
-{userMessage.map((message, index) => (
-<Col key={user-${index}}>
-<img src={message.image} alt="User Avatar" />
-<p>{message.text}</p>
-</Col>
-))}
-{botMessage.map((message, index) => (
-<Col key={bot-${index}}>
-<img src={message.image} alt="Bot Avatar" />
-<p>{message.text}</p>
-</Col>
-))}
+  {userMessage.map((message, index) => (
+    <Col key={`user-${index}`}>
+      <img src={message.image} alt="User Avatar" />
+      <p>{message.text}</p>
+    </Col>
+  ))}
+  {botMessage.map((message, index) => (
+    <Col key={`bot-${index}`}>
+      <img src={message.image} alt="Bot Avatar" />
+      <p>{message.text}</p>
+    </Col>
+  ))}
 </Row>
+
 </Container>
 );
 
