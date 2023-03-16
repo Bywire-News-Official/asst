@@ -1,83 +1,58 @@
-import React, { useState, useCallback } from "react";
-import { Container, Form, Button, Row, Col, FormControl } from 'react-bootstrap';
-import axios from "axios";
-import ProfilePicture from "../person.gif";
-import BotPicture from "../bot.gif";
-import RobotPicture from "../robot.gif";
-import AlienPicture from "../alien.gif";
-import Robot2Picture from "../robot2.gif";
-import Robot3Picture from "../robot3.gif";
-
-const { Configuration, OpenAIApi } = require('openai');
-const API_KEY = process.env.REACT_APP_OPENAI_API_KEY
-
-
-const Chat = () => {
-    const [heading, setHeading] = useState("The response from the AI will be shown here...");
-    const [response, setResponse] = useState(".......... the AI is pondering world domination");
-    const [copySuccess, setCopySuccess] = useState("");
-    const [buttonText, setButtonText] = useState("Send");
-    const [userInput, setUserInput] = useState('');
-    const [userMessage, setUserMessage] = useState([]);
-    const [botMessage, setBotMessage] = useState([]);
-    const [avatar, setAvatar] = useState(ProfilePicture);
-    const [copiedMessages, setCopiedMessages] = useState([]);
-
-    const onFormSubmit = useCallback(async e => {
-        e.preventDefault();
-        setButtonText("Waiting for response...");
-        const formData = new FormData(e.target.form);
-        const formDataObj = Object.fromEntries(formData.entries());
-        let promptText = formDataObj.articleName || '';
-        const isCodeInput = isCode(promptText);
-        const configuration = new Configuration({
-            apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-        });
-        const openai = new OpenAIApi(configuration);
-        let data = {};
-        // Check if the input is code
-        if (isCode(promptText)) {
-            data = {
-                model: 'code-davinci-002',
-                prompt: promptText,
-            }
-        } else {
-            data = {
-            model: 'gpt-3.5-turbo',
+const onFormSubmit = useCallback(async e => {
+    e.preventDefault();
+    setButtonText("Waiting for response...");
+    const formData = new FormData(e.target.form);
+    const formDataObj = Object.fromEntries(formData.entries());
+    let promptText = formDataObj.articleName || '';
+    const isCodeInput = isCode(promptText);
+    const configuration = new Configuration({
+        apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
+    let data = {};
+    // Check if the input is code
+    if (isCode(promptText)) {
+        data = {
+            model: 'code-davinci-002', // Keep the code model you were using previously
             prompt: promptText,
-            temperature: 0.7,
-            max_tokens: 2048,
-            top_p: 1,
-            frequency_penalty: 0,
-            presence_penalty: 0,
-            };
         }
-        setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
-        try {
-            const response = await axios.post("https://api.openai.com/v1/chat/completions", data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: 'Bearer ' + API_KEY,
-                },
-            });
-            setHeading('');
-			let responseText;
-			 // Check if the input is code
+    } else {
+        data = {
+        model: 'gpt-4', // Update the model name to GPT-4
+        prompt: promptText,
+        temperature: 0.7,
+        max_tokens: 2048,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+        };
+    }
+    setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
+    try {
+        const response = await axios.post("https://api.openai.com/v1/chat/completions", data, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + API_KEY,
+            },
+        });
+        setHeading('');
+        let responseText;
+        // Check if the input is code
         if (isCode(promptText)) {
             responseText = `<pre><code>${response.data.choices[0].text}</code></pre>`;
         } else {
             responseText = response.data.choices[0].text;
         }
-            setResponse(responseText);
-            setButtonText("Send");
-            setBotMessage(botMessage => [...botMessage, responseText]);
-            setUserInput('');
-            window.scrollTo(0, document.body.scrollHeight);
-        } catch (error) {
-            console.log(error);
-        }
-    }, [API_KEY]);
-    
+        setResponse(responseText);
+        setButtonText("Send");
+        setBotMessage(botMessage => [...botMessage, responseText]);
+        setUserInput('');
+        window.scrollTo(0, document.body.scrollHeight);
+    } catch (error) {
+        console.log(error);
+    }
+}, [API_KEY]);
+
     // Function to check if the input is code
     const isCode = (input) => {
         const codeRegex = /(function|var|let|const|{|})/g;
