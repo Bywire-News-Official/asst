@@ -43,7 +43,7 @@ const Chat = () => {
         }
     } else {
         data = {
-        model: 'gpt-4', // Update the model name to GPT-4
+        model: 'text-davinci-003', // Update the model name to GPT-4
         prompt: promptText,
         temperature: 0.7,
         max_tokens: 2048,
