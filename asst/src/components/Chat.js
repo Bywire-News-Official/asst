@@ -23,31 +23,30 @@ const Chat = () => {
     const [copiedMessages, setCopiedMessages] = useState([]);
 
     const onFormSubmit = useCallback(async e => {
-        e.preventDefault();
-        setButtonText("Waiting for response...");
-        const formData = new FormData(e.target.form);
-        const formDataObj = Object.fromEntries(formData.entries());
-        let promptText = formDataObj.articleName || '';
-        const isCodeInput = isCode(promptText);
+    e.preventDefault();
+    setButtonText("Waiting for response...");
 
-        const configuration = new Configuration({
-            apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-        });
-        const openai = new OpenAIApi(configuration);
+    let promptText = userInput || '';
+    const isCodeInput = isCode(promptText);
 
-        const data = {
-            model: isCodeInput ? 'code-davinci-002' : 'text-davinci-003',
-            prompt: promptText,
-            ...(!isCodeInput && {
-                temperature: 0.7,
-                max_tokens: 2048,
-                top_p: 1,
-                frequency_penalty: 0,
-                presence_penalty: 0,
-            }),
-        };
+    const configuration = new Configuration({
+        apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
 
-        setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
+    const data = {
+        model: isCodeInput ? 'code-davinci-002' : 'text-davinci-003',
+        prompt: promptText,
+        ...(!isCodeInput && {
+            temperature: 0.7,
+            max_tokens: 2048,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+        }),
+    };
+
+    setUserMessage(userMessage => [...userMessage, userInput]);
         try {
             const response = await axios.post("https://api.openai.com/v1/completions", data, {
                 headers: {
