@@ -22,6 +22,7 @@ const Chat = () => {
     const [avatar, setAvatar] = useState(ProfilePicture);
     
         // Initialize the OpenAI API client
+    console.log("API_KEY:", API_KEY);
     const openai = new OpenAIApi({
     apiKey: API_KEY,
     config: new Configuration(),
