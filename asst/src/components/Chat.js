@@ -43,10 +43,10 @@ const Chat = () => {
             }
         } else {
             data = {
-            model: 'gpt-3.5-turbo',
+            model: 'gpt-4',
             prompt: promptText,
             temperature: 0.7,
-            max_tokens: 4000,
+            max_tokens: 2048,
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,
