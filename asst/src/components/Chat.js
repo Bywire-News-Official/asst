@@ -27,7 +27,7 @@ const Chat = () => {
     config: new Configuration(),
     });
 
-    const sendMessage = useCallback(async function() {
+  const sendMessage = useCallback(async () => {
   if (!userInput.trim()) return;
 
   setUserMessage([...userMessage, { text: userInput, image: avatar }]);
@@ -56,7 +56,8 @@ const Chat = () => {
     setButtonText("Send");
     setUserInput('');
   }
-}.bind(this), [userInput, userMessage, botMessage, avatar]);
+}, [userInput, userMessage, botMessage, avatar]);
+
 
 
 const handleKeyPress = (event) => {
