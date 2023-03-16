@@ -43,7 +43,7 @@ const Chat = () => {
             }
         } else {
             data = {
-            model: 'gpt-4-32k',
+            model: 'gpt-4',
             prompt: promptText,
             temperature: 0.7,
             max_tokens: 4000,
