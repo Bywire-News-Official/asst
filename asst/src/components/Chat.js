@@ -74,15 +74,17 @@ const Chat = () => {
         return codeRegex.test(input);
     };
 
-    const onKeyPress = e => {
-        if (e.key === 'Enter' || e.key === 'Return') {
-            onFormSubmit(e);
-        }
+    const onKeyDown = e => {
+    if (e.key === 'Enter' && !e.ctrlKey) {
+        e.preventDefault();
+        onFormSubmit(e);
+    }
 
-        if (e.key === 'Control' && e.key === 'Enter') {
-            addNewLine();
-        }
-    };
+    if (e.key === 'Enter' && e.ctrlKey) {
+        addNewLine();
+    }
+};
+
 
     const copyToClipboard = (e, index) => {
         setCopiedMessages(copiedMessages => [...copiedMessages, index]);
@@ -103,12 +105,13 @@ const Chat = () => {
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Label>Ask the AI</Form.Label>
                             <FormControl
-                                as="textarea"
-                                rows={3}
-                                value={userInput}
-                                onChange={e => setUserInput(e.target.value)}
-                                onKeyPress={onKeyPress}
-                            />
+    as="textarea"
+    rows={3}
+    value={userInput}
+    onChange={e => setUserInput(e.target.value)}
+    onKeyDown={onKeyDown}
+/>
+
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             {buttonText}
