@@ -54,7 +54,7 @@ const Chat = () => {
     }
     setUserMessage(userMessage => [...userMessage, formDataObj.articleName]);
     try {
-        const response = await axios.post("https://api.openai.com/v1/chat/completions", data, {
+        const response = await axios.post("https://api.openai.com/v1/completions", data, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + API_KEY,
